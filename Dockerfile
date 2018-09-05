@@ -26,8 +26,10 @@ RUN make ; exit 0
 WORKDIR /home/mallard/Projects/os/src/3rdparty
 RUN ./3rdparty.sh stage2
 USER root
-RUN apt-get update && apt-get install -y grub-pc qemu
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y grub-pc qemu xorriso
 USER mallard
+WORKDIR /home/mallard/Projects/os/src
 RUN make
 EXPOSE 22
 EXPOSE 5901
