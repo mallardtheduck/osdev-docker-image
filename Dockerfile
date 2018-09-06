@@ -36,5 +36,14 @@ ADD --chown=mallard:mallard ./.git/modules/os /home/mallard/Projects/os/.git
 RUN sed -i '/worktree = /d' /home/mallard/Projects/os/.git/config
 WORKDIR /home/mallard/Projects/os/src
 RUN make
+ADD --chown=mallard:mallard ./qemu-launch-opts.txt /home/mallard/Projects/os/src/qemu-launch-opts.txt
+USER root
+RUN echo -e "btosdev\nbtosdev" | passwd mallard
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 EXPOSE 22
-EXPOSE 5901
+EXPOSE 5902
+EXPOSE 4444
+VOLUME /home/mallard/Projects/os

@@ -1,0 +1,1 @@
+-vnc 127.0.0.1:2 -cpu pentium3 -monitor telnet:127.0.0.1:4444,server,nowait
