@@ -40,7 +40,7 @@ ADD --chown=mallard:mallard ./qemu-launch-opts.txt /home/mallard/Projects/os/src
 ADD ./enable-kvm.sh /home/mallard/enable-kvm.sh
 USER root
 RUN echo -e "btosdev\nbtosdev" | passwd mallard
-RUN apt-get update && apt-get install -y openssh-server sudo
+RUN apt-get update && apt-get install -y openssh-server sudo kmod
 RUN mkdir /var/run/sshd
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
