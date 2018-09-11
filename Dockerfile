@@ -38,6 +38,7 @@ WORKDIR /home/mallard/Projects/os/src
 RUN make
 ADD --chown=mallard:mallard ./qemu-launch-opts.txt /home/mallard/Projects/os/src/qemu-launch-opts.txt
 ADD ./enable-kvm.sh /home/mallard/enable-kvm.sh
+ADD ./setup-git.sh /home/mallard/setup-git.sh
 USER root
 RUN echo -e "btosdev\nbtosdev" | passwd mallard
 RUN apt-get update && apt-get install -y openssh-server sudo kmod
