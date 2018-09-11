@@ -41,6 +41,7 @@ ADD ./enable-kvm.sh /home/mallard/enable-kvm.sh
 USER root
 RUN echo -e "btosdev\nbtosdev" | passwd mallard
 RUN apt-get update && apt-get install -y openssh-server sudo kmod
+ADD ./sshd_config /etc/ssh/sshd_config
 RUN mkdir /var/run/sshd
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
