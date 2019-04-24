@@ -1,5 +1,4 @@
-image:
-  file: Dockerfile
+image: mallardtheduck/btos-dev
 ports:
 - port: 22
 - port: 5902
