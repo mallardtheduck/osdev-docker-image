@@ -1,0 +1,6 @@
+image: mallardtheduck/btos-dev
+ports:
+- port: 22
+- port: 5902
+- port: 4444
+workspaceLocation: /home/mallard/Projects/os
