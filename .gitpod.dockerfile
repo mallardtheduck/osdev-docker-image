@@ -1,4 +1,5 @@
 FROM gitpod/workspace-full
+USER root
 RUN apt-get update && apt-get install -y build-essential git bash wget autoconf2.64 automake1.11
 RUN useradd --create-home --shell /bin/bash mallard
 RUN adduser mallard sudo
